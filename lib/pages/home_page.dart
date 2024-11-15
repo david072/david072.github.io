@@ -6,96 +6,162 @@ import 'package:portfolio/pages/projects/cofence_page.dart';
 import 'package:portfolio/pages/projects/fencing_tableau_page.dart';
 import 'package:portfolio/pages/projects/funcially_page.dart';
 
+const double mediumScreenWidth = 1000;
+// TODO: properly set this
+const double largeScreenWidth = 2000;
+
 final birthday = DateTime(2007, 02, 18);
+
+class ResponsiveContent extends StatelessWidget {
+  const ResponsiveContent({
+    super.key,
+    required this.header,
+    required this.content,
+  });
+
+  final Widget header;
+  final Widget content;
+
+  @override
+  Widget build(BuildContext context) {
+    double width = MediaQuery.sizeOf(context).width;
+
+    Widget body;
+    if (width < mediumScreenWidth) {
+      body = SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            header,
+            const Divider(height: 50, thickness: 4),
+            content,
+          ],
+        ),
+      );
+    } else if (width >= mediumScreenWidth && width <= largeScreenWidth) {
+      body = Row(
+        children: [
+          Expanded(child: header),
+          const VerticalDivider(width: 50),
+          Expanded(child: SingleChildScrollView(child: content)),
+        ],
+      );
+    } else {
+      throw "todo";
+    }
+
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: body,
+        ),
+      ),
+    );
+  }
+}
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    return const ResponsiveContent(
+      header: _HomePageHeader(),
+      content: _ProjectsList(),
+    );
+  }
+}
+
+class _HomePageHeader extends StatelessWidget {
+  const _HomePageHeader();
+
+  @override
+  Widget build(BuildContext context) {
     int age = (DateTime.now().difference(birthday).inDays / 365).floor();
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Hello, I'm",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                const Text(
-                  "David Ganz",
-                  style: TextStyle(
-                    fontSize: 100,
-                    fontWeight: FontWeight.w900,
-                    height: 1,
-                  ),
-                ),
-                const SizedBox(height: 25),
-                InfoCard(
-                  color: Colors.blue[800]!,
-                  title: "Summary",
-                  content: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const ListTile(
-                        title: Text("Aspiring software engineer from Germany"),
-                      ),
-                      ListTile(title: Text("$age years old")),
-                    ],
-                  ),
-                ),
-                const Divider(height: 50, thickness: 4),
-                Text(
-                  "My Projects",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-                const SizedBox(height: 20),
-                GridView.count(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                  crossAxisCount: 2,
-                  children: [
-                    _ProjectCard(
-                      backgroundImage: "assets/fencing_tableau_thumbnail.png",
-                      name: "Fencing Tableau",
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => const FencingTableauPage()),
-                      ),
-                    ),
-                    _ProjectCard(
-                      backgroundImage: "assets/funcially_thumbnail.png",
-                      name: "Funcially",
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => const FunciallyPage()),
-                      ),
-                    ),
-                    _ProjectCard(
-                      backgroundImage: "assets/cofence_thumbnail.png",
-                      name: "Cofence",
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => const CofencePage()),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "Hello, I'm",
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
+        const Text(
+          "David Ganz",
+          style: TextStyle(
+            fontSize: 100,
+            fontWeight: FontWeight.w900,
+            height: 1,
           ),
         ),
-      ),
+        const SizedBox(height: 25),
+        InfoCard(
+          color: Colors.blue[800]!,
+          title: "Summary",
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const ListTile(
+                title: Text("Aspiring software engineer from Germany"),
+              ),
+              ListTile(title: Text("$age years old")),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _ProjectsList extends StatelessWidget {
+  const _ProjectsList();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          "My Projects",
+          style: Theme.of(context).textTheme.headlineLarge,
+        ),
+        const SizedBox(height: 20),
+        GridView.count(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+          crossAxisCount: 2,
+          children: [
+            _ProjectCard(
+              backgroundImage: "assets/fencing_tableau_thumbnail.png",
+              name: "Fencing Tableau",
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const FencingTableauPage()),
+              ),
+            ),
+            _ProjectCard(
+              backgroundImage: "assets/funcially_thumbnail.png",
+              name: "Funcially",
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const FunciallyPage()),
+              ),
+            ),
+            _ProjectCard(
+              backgroundImage: "assets/cofence_thumbnail.png",
+              name: "Cofence",
+              onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => const CofencePage()),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }
