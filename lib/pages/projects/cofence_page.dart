@@ -10,6 +10,7 @@ class CofencePage extends StatelessWidget {
       name: "Cofence",
       nameSize: 93,
       links: [
+        ("Home Page", Uri.parse("https://cofence-app.com")),
         ("Instagram", Uri.parse("https://www.instagram.com/cofence.app/")),
       ],
       images: const [
