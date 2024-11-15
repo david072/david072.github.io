@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:portfolio/pages/project_page.dart';
 import 'package:portfolio/pages/projects/cofence_page.dart';
 import 'package:portfolio/pages/projects/fencing_tableau_page.dart';
@@ -150,26 +151,17 @@ class _ProjectsList extends StatelessWidget {
             _ProjectCard(
               backgroundImage: "assets/fencing_tableau_thumbnail.png",
               name: "Fencing Tableau",
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const FencingTableauPage()),
-              ),
+              onTap: () => context.go("/fencing-tableau"),
             ),
             _ProjectCard(
               backgroundImage: "assets/funcially_thumbnail.png",
               name: "Funcially",
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const FunciallyPage()),
-              ),
+              onTap: () => context.go("/funcially"),
             ),
             _ProjectCard(
               backgroundImage: "assets/cofence_thumbnail.png",
               name: "Cofence",
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => const CofencePage()),
-              ),
+              onTap: () => context.go("/cofence"),
             ),
           ],
         ),
