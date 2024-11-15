@@ -1,14 +1,14 @@
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/project_page.dart';
 import 'package:portfolio/pages/projects/cofence_page.dart';
 import 'package:portfolio/pages/projects/fencing_tableau_page.dart';
 import 'package:portfolio/pages/projects/funcially_page.dart';
 
-const double mediumScreenWidth = 1000;
-// TODO: properly set this
-const double largeScreenWidth = 2000;
+const double mediumScreenWidth = 950;
+const double largeScreenWidth = 1100;
 
 final birthday = DateTime(2007, 02, 18);
 
@@ -47,13 +47,25 @@ class ResponsiveContent extends StatelessWidget {
         ],
       );
     } else {
-      throw "todo";
+      body = Align(
+        alignment: Alignment.center,
+        child: SizedBox(
+          width: 3 / 4 * width,
+          child: Row(
+            children: [
+              Expanded(child: header),
+              const VerticalDivider(width: 50),
+              Expanded(child: SingleChildScrollView(child: content)),
+            ],
+          ),
+        ),
+      );
     }
 
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(!kIsWeb ? 8 : 32),
           child: body,
         ),
       ),
