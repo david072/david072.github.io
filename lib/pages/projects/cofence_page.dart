@@ -49,6 +49,7 @@ class CofencePage extends StatelessWidget {
         Technologies.dart,
         Technologies.googleCloud,
         Technologies.webScraping,
+        Technologies.gitAndGitHub,
       ],
     );
   }

@@ -52,6 +52,8 @@ class FunciallyPage extends StatelessWidget {
         Technologies.rust,
         Technologies.wasm,
         Technologies.pwa,
+        Technologies.gitAndGitHub,
+        Technologies.githubActions,
       ],
     );
   }

@@ -7,11 +7,36 @@ import 'package:portfolio/pages/project_page.dart';
 import 'package:portfolio/pages/projects/cofence_page.dart';
 import 'package:portfolio/pages/projects/fencing_tableau_page.dart';
 import 'package:portfolio/pages/projects/funcially_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 const double mediumScreenWidth = 950;
 const double largeScreenWidth = 1100;
 
+final github = Uri.parse("https://github.com/david072");
+
 final birthday = DateTime(2007, 02, 18);
+
+class UrlListTile extends StatelessWidget {
+  const UrlListTile({
+    super.key,
+    required this.title,
+    this.subtitle,
+    required this.uri,
+  });
+
+  final String title;
+  final String? subtitle;
+  final Uri uri;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text(title),
+      subtitle: subtitle != null ? Text(subtitle!) : null,
+      onTap: () => launchUrl(uri),
+    );
+  }
+}
 
 class ResponsiveContent extends StatelessWidget {
   const ResponsiveContent({
@@ -108,6 +133,7 @@ class _HomePageHeader extends StatelessWidget {
             height: 1,
           ),
         ),
+        const Text("aka david072"),
         const SizedBox(height: 25),
         InfoCard(
           color: Colors.blue[800]!,
@@ -122,7 +148,18 @@ class _HomePageHeader extends StatelessWidget {
               ListTile(title: Text("$age years old")),
             ],
           ),
-        )
+        ),
+        const SizedBox(height: 8),
+        InfoCard(
+          color: Colors.deepPurple,
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              UrlListTile(title: "GitHub", uri: github),
+            ],
+          ),
+        ),
       ],
     );
   }

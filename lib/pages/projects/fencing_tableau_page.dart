@@ -33,6 +33,7 @@ class FencingTableauPage extends StatelessWidget {
         Technologies.flutter,
         Technologies.sqlite,
         Technologies.firebase,
+        Technologies.gitAndGitHub,
       ],
     );
   }

@@ -14,33 +14,62 @@ class Technologies {
   static final googleCloudHomePage = Uri.parse("https://cloud.google.com/");
   static final webScrapingHomePage =
       Uri.parse("https://en.wikipedia.org/wiki/Web_scraping");
+  static final githubHomePage = Uri.parse("https://github.com");
+  static final githubActionsInfoPage =
+      Uri.parse("https://docs.github.com/en/actions");
 
-  static final flutter =
-      ("Flutter", "Cross-Platform App Development Framework", flutterHomePage);
+  static final flutter = (
+    "Flutter",
+    "Cross-Platform App Development Framework",
+    flutterHomePage,
+  );
   static final dart = (
     "Dart",
     "Programming Language similar to Java; used on the backend",
-    dartHomePage
+    dartHomePage,
   );
-  static final rust =
-      ("Rust", "General Purpose Programming Language", rustHomePage);
+  static final rust = (
+    "Rust",
+    "General Purpose Programming Language",
+    rustHomePage,
+  );
 
-  static final googleCloud =
-      ("Google Cloud", "Hosting the web scraper backend", googleCloudHomePage);
+  static final googleCloud = (
+    "Google Cloud",
+    "Hosting the web scraper backend",
+    googleCloudHomePage,
+  );
   static final firebase = (
     "Firebase",
     "Cloud Firestore, Authentication, Cloud Storage",
-    firebaseHomePage
+    firebaseHomePage,
+  );
+  static final gitAndGitHub = (
+    "Git & GitHub",
+    "Version Control",
+    githubHomePage,
+  );
+  static final githubActions = (
+    "GitHub Actions",
+    null,
+    githubActionsInfoPage,
   );
 
   static final pwa = (
     "Progressive Web App",
     "Way to install web apps on a device for offline usage",
-    pwaInfoPage
+    pwaInfoPage,
   );
-  static final wasm = ("WASM", "Running Rust as a Website", wasmHomePage);
-  static final sqlite =
-      ("SQLite", "Database schema with 17 tables", sqliteHomePage);
+  static final wasm = (
+    "WASM",
+    "Running Rust as a Website",
+    wasmHomePage,
+  );
+  static final sqlite = (
+    "SQLite",
+    "Database schema with 17 tables",
+    sqliteHomePage,
+  );
 
   static final webScraping = (
     "Web Scraping",
