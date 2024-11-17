@@ -221,7 +221,6 @@ class _ProjectCard extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue,
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
             image: ExactAssetImage(backgroundImage),
