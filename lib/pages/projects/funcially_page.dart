@@ -11,7 +11,7 @@ class FunciallyPage extends StatelessWidget {
       nameSize: 84,
       links: [
         ("Live Version", Uri.parse("https://david072.github.io/funcially/")),
-        ("Github", Uri.parse("https://github.com/david072/funcially")),
+        ("Repository", Uri.parse("https://github.com/david072/funcially")),
       ],
       images: const ["assets/funcially.png"],
       summary:

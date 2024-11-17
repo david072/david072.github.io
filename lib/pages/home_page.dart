@@ -4,9 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/pages/project_page.dart';
-import 'package:portfolio/pages/projects/cofence_page.dart';
-import 'package:portfolio/pages/projects/fencing_tableau_page.dart';
-import 'package:portfolio/pages/projects/funcially_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const double mediumScreenWidth = 950;
@@ -193,7 +190,7 @@ class _ProjectsList extends StatelessWidget {
             _ProjectCard(
               backgroundImage: "assets/funcially_thumbnail.png",
               name: "Funcially",
-              onTap: () => context.go("/funcially"),
+              onTap: () => context.go("/funcially-project"),
             ),
             _ProjectCard(
               backgroundImage: "assets/cofence_thumbnail.png",

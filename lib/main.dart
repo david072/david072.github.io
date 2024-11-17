@@ -25,7 +25,7 @@ void main() {
                 builder: (context, state) => const FencingTableauPage(),
               ),
               GoRoute(
-                path: "funcially",
+                path: "funcially-project",
                 builder: (context, state) => const FunciallyPage(),
               ),
               GoRoute(
